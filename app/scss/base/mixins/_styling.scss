@@ -1,0 +1,37 @@
+@function calculateRem($size) {
+  $remSize: $size / 16px; //Default font size on html element is 100%, equivalent to 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin font($fs, $fw: false, $fl: false) {
+	font-size: $fs;
+	font-size: calculateRem($fs);
+	@if $fw {
+		font-weight: $fw;
+	}
+	@if $fl {
+		line-height: $fl;
+	}
+}
+
+@mixin antialias {
+	font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin appearance($val: none) {
+	-webkit-appearance: $val;
+	-moz-appearance: $val;
+	appearance: $val;
+}
+
+@mixin selection {
+	::-moz-selection { @content; }
+	::selection { @content; }
+}
+
+@mixin unselectable {
+	-webkit-touch-callout: none;
+	user-select: none;
+}

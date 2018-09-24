@@ -1,0 +1,135 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: all .3s ease-in-out; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+html {
+  height: 100%; }
+
+body, html {
+  min-height: 100%;
+  width: 100%; }
+
+.clear::after, .clear::before {
+  content: " ";
+  display: table; }
+
+.clear::after {
+  clear: both; }
+
+.header {
+  height: 100vh; }
+  .header__row {
+    background: #f3c406; }
+  .header .logo {
+    background: #474747;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+  .menu__burger {
+    width: 30px;
+    height: 3px;
+    position: relative;
+    top: 2%;
+    right: 5%;
+    display: none;
+    background: #FFF; }
+    .menu__burger::before, .menu__burger::after {
+      width: 30px;
+      height: 3px;
+      position: absolute;
+      content: "";
+      background: #FFF; }
+    .menu__burger::before {
+      top: -9px; }
+    .menu__burger::after {
+      bottom: -9px; }
+    @media (max-width: 600px) {
+      .menu__burger {
+        display: flex; } }
+  .menu__items {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px; }
+    @media (max-width: 600px) {
+      .menu__items {
+        display: none;
+        flex-flow: column wrap;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        background: #f3c406;
+        position: absolute;
+        top: 100%; } }
+  .menu__link {
+    text-decoration: none;
+    color: #9b7d08;
+    font: 20px/60px "PT Sans", sans-serif; }
+    @media (max-width: 600px) {
+      .menu__link {
+        border-bottom: 1px solid #9b7d08; } }
+  .menu__text {
+    text-transform: uppercase; }
+  .menu__icon {
+    margin-right: 15px; }
+  .menu .active {
+    display: flex; }
