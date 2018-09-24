@@ -1,7 +1,7 @@
 {
-  "name": "luara",
+  "name": "start",
   "version": "1.0.0",
-  "description": "luara website",
+  "description": "start website",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,7 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
+    "bootstrap": "^4.1.3",
     "jquery": "^3.3.1"
   }
 }
