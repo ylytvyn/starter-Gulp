@@ -8,10 +8,21 @@ var gulp = require('gulp'),
 	cache = require('gulp-cache'),
 	gulpIf = require('gulp-if'),
 	del = require('del'),
-	runSequence = require('run-sequence');
+	runSequence = require('run-sequence'),
+	plumber = require('gulp-plumber'),
+	wait = require('gulp-wait'),
+	notify = require('gulp-notify');
 
 gulp.task('sass', function() {
 	return gulp.src('app/scss/global.scss')
+			   .pipe(wait(500))
+			   .pipe(plumber({
+			   	errorHandler: function(err) {
+			   		notify.onError({
+			   			title: "Gulp error in " + err.plugin,
+			   			message: err.toString()
+			   		})(err);
+			   	}}))
 			   .pipe(sass())
 			   .pipe(gulp.dest('app/css'))
 			   .pipe(browserSync.reload({stream: true}))
@@ -48,7 +59,16 @@ gulp.task('clean:dist', function() {
   return del.sync('dist');
 });
 
-gulp.task('watch', ['browserSync', 'sass'], function() {
+gulp.task('modules', function() {
+    sources = [
+      './node_modules/bootstrap/dist/css/bootstrap.min.css',
+      './node_modules/jquery/dist/jquery.min.js',
+      './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+    ]
+    gulp.src(sources).pipe(gulp.dest('app/js/modules/'));
+});
+
+gulp.task('watch', ['modules', 'browserSync', 'sass'], function() {
 	gulp.watch('app/scss/**/*.scss', ['sass']);
 	gulp.watch('app/*.html', browserSync.reload);
 	gulp.watch('app/js/**/*.js', browserSync.reload)
@@ -62,7 +82,7 @@ gulp.task('build', function (callback) {
 });
 
 gulp.task('default', function (callback) {
-  runSequence(['sass','browserSync', 'watch'],
+  runSequence(['sass', 'browserSync', 'watch'],
     callback
   )
 });
