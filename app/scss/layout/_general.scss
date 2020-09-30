@@ -20,12 +20,3 @@ body, html {
 	min-height: 100%;
 	width: 100%;
 }
-
-.clear::after, .clear::before {
-	content: " ";
-	display: table;
-}
-
-.clear::after {
-	clear: both;
-}
